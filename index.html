@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>テニススコア記録アプリ【無料】記録・管理アプリ</title>
+    <meta name="description" content="テニスの試合スコアをリアルタイム記録。セット・ゲーム・ポイントを管理。登録不要・完全無料でご利用いただけます。">
+    <link rel="canonical" href="https://appadaycreator.github.io/tennis-score-tracker/">
+    <meta property="og:title" content="テニススコア記録アプリ【無料】記録・管理アプリ">
+    <meta property="og:description" content="テニスの試合スコアをリアルタイム記録。セット・ゲーム・ポイントを管理。登録不要・完全無料でご利用いただけます。">
+    <meta property="og:url" content="https://appadaycreator.github.io/tennis-score-tracker/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ja_JP">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎾</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.clarity.ms">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <!-- GTM -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TXQGZRF9');</script>
+    <!-- Clarity -->
+    <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","s3t9vl8h3v");</script>
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8427583028015858" crossorigin="anonymous"></script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"テニススコア記録アプリ","description":"テニスの試合スコアをリアルタイム記録。セット・ゲーム・ポイントを管理。登録不要・完全無料でご利用いただけます。","url":"https://appadaycreator.github.io/tennis-score-tracker/","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}}</script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', 'Noto Sans JP', sans-serif; background: linear-gradient(135deg, #D1FAE5 0%, #ECFDF5 100%); min-height: 100vh; color: #333; line-height: 1.6; }
+        .site-header { background: #059669; color: white; padding: 32px 20px; text-align: center; }
+        .site-header .emoji { font-size: 52px; margin-bottom: 8px; }
+        .site-header h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+        .site-header p { font-size: 14px; opacity: 0.9; }
+        .container { max-width: 800px; margin: 0 auto; padding: 16px; }
+        .card { background: white; border-radius: 16px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 16px; }
+        .btn { background: #059669; color: white; border: none; padding: 14px 24px; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; transition: opacity .2s; }
+        .btn:hover { opacity: 0.9; }
+        .btn:active { transform: scale(0.98); }
+        input, select, textarea { width: 100%; padding: 10px 14px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 15px; margin-top: 4px; font-family: inherit; }
+        input:focus, select:focus { outline: none; border-color: #059669; }
+        label { font-size: 13px; font-weight: 600; color: #555; display: block; margin-top: 14px; margin-bottom: 2px; }
+        .result { display: none; }
+        .result.show { display: block; }
+        .result-value { font-size: 36px; font-weight: 700; color: #059669; text-align: center; padding: 16px 0; }
+        .badge { display: inline-block; background: #05966920; color: #059669; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        /* ── サービス固有CSS ── */
+        .entry-card { border-left:3px solid #059669;padding:10px 12px;
+          background:#f0fdf4;border-radius:0 8px 8px 0;margin-bottom:8px; }
+        .entry-date { font-size:11px;color:#64748b; }
+        .entry-vs { font-size:14px;font-weight:700;color:#334155;margin-top:2px; }
+        .entry-score { font-size:13px;color:#059669;margin-top:2px; }
+        .win-badge { display:inline-block;background:#059669;color:white;
+          padding:2px 8px;border-radius:12px;font-size:11px;font-weight:700; }
+        .loss-badge { display:inline-block;background:#94a3b8;color:white;
+          padding:2px 8px;border-radius:12px;font-size:11px;font-weight:700; }
+        .stat-box { background:#f0fdf4;border-radius:8px;padding:10px;text-align:center;flex:1; }
+        .stat-num { font-size:1.4rem;font-weight:700;color:#059669; }
+        .stat-label { font-size:11px;color:#64748b;margin-top:2px; }
+    </style>
+</head>
+<body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TXQGZRF9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <header class="site-header">
+        <div class="emoji">🎾</div>
+        <h1>テニススコア記録アプリ</h1>
+        <p>テニスの試合スコアをリアルタイム記録。セット・ゲーム・ポイントを管理。</p>
+    </header>
+
+    <main class="container">
+        <ins class="adsbygoogle" style="display:block;margin:12px 0" data-ad-client="ca-pub-8427583028015858" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+        <div class="card">
+          <h2 style="font-size:18px;font-weight:700;margin-bottom:16px;">🎾 試合を記録する</h2>
+
+          <label style="font-size:13px;font-weight:600;color:#475569;">対戦相手</label>
+          <input type="text" id="opponent" placeholder="例：田中さん、クラブAチーム" style="margin-top:4px;">
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;">
+            <div>
+              <label style="font-size:13px;font-weight:600;color:#475569;">セット数（自分）</label>
+              <input type="number" id="my-sets" placeholder="0" min="0" max="3" style="margin-top:4px;">
+            </div>
+            <div>
+              <label style="font-size:13px;font-weight:600;color:#475569;">セット数（相手）</label>
+              <input type="number" id="opp-sets" placeholder="0" min="0" max="3" style="margin-top:4px;">
+            </div>
+          </div>
+
+          <label style="font-size:13px;font-weight:600;color:#475569;margin-top:12px;display:block;">スコア詳細（任意）</label>
+          <input type="text" id="score-detail" placeholder="例：6-3, 4-6, 7-5" style="margin-top:4px;">
+
+          <label style="font-size:13px;font-weight:600;color:#475569;margin-top:12px;display:block;">メモ（任意）</label>
+          <textarea id="match-memo" rows="2" placeholder="例：サーブ好調、バックハンドを強化したい..." style="resize:vertical;margin-top:4px;"></textarea>
+
+          <button class="btn" style="margin-top:16px;" onclick="addEntry()">記録する ＋</button>
+        </div>
+
+        <div class="card result" id="result" style="margin-top:12px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+            <h3 style="font-size:15px;font-weight:700;">📋 試合記録</h3>
+            <span id="entry-count" style="font-size:12px;color:#94a3b8;"></span>
+          </div>
+          <div style="display:flex;gap:8px;margin-bottom:12px;">
+            <div class="stat-box">
+              <div class="stat-num" id="stat-win">0</div>
+              <div class="stat-label">勝利</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num" id="stat-lose" style="color:#94a3b8;">0</div>
+              <div class="stat-label">敗北</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num" id="stat-rate">—</div>
+              <div class="stat-label">勝率</div>
+            </div>
+          </div>
+          <div id="entries">
+            <p style="text-align:center;color:#cbd5e1;font-size:14px;padding:16px;">まだ記録がありません</p>
+          </div>
+        </div>
+
+        <!-- 関連サービス -->
+        <div class="card" style="margin-top:8px;">
+            <h3 style="font-size:13px;font-weight:600;color:#888;margin-bottom:10px;">🔗 関連サービス</h3>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+                <a href="https://appadaycreator.github.io/golf-score-tracker/" style="color:#6366f1;font-size:13px;text-decoration:none;padding:6px 0;border-bottom:1px solid #f1f5f9;">⛳ ゴルフスコア管理・分析 →</a>
+                <a href="https://appadaycreator.github.io/running-pace-calculator/" style="color:#6366f1;font-size:13px;text-decoration:none;padding:6px 0;border-bottom:1px solid #f1f5f9;">🏃 ランニングペース計算ツール →</a>
+            </div>
+        </div>
+
+        <ins class="adsbygoogle" style="display:block;margin:12px 0" data-ad-client="ca-pub-8427583028015858" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </main>
+
+    <footer style="text-align:center;padding:20px;color:white;font-size:12px;opacity:0.75;margin-top:8px;">
+        <p><a href="https://appadaycreator.github.io/" style="color:white;">AppADayCreator</a>
+        | <a href="privacy-policy.html" style="color:white;">プライバシーポリシー</a>
+        | <a href="terms.html" style="color:white;">利用規約</a>
+        | <a href="contact.html" style="color:white;">お問い合わせ</a></p>
+        <p style="margin-top:6px;">© 2025 AppADayCreator. All services are free.</p>
+    </footer>
+
+    <script>
+    const KEY = 'tennis-score-tracker-entries';
+    let entries = JSON.parse(localStorage.getItem(KEY) || '[]');
+
+    document.addEventListener('DOMContentLoaded', () => {
+      render();
+    });
+
+    function addEntry() {
+      const opponent = document.getElementById('opponent').value.trim();
+      const mySets = parseInt(document.getElementById('my-sets').value);
+      const oppSets = parseInt(document.getElementById('opp-sets').value);
+      const scoreDetail = document.getElementById('score-detail').value.trim();
+      const memo = document.getElementById('match-memo').value.trim();
+
+      if (!opponent) { alert('対戦相手を入力してください'); return; }
+      if (isNaN(mySets) || isNaN(oppSets)) { alert('セット数を入力してください'); return; }
+
+      const won = mySets > oppSets;
+      const today = new Date().toLocaleDateString('ja-JP', {month:'numeric', day:'numeric', weekday:'short'});
+      entries.unshift({
+        id: Date.now(),
+        date: today,
+        fullDate: new Date().toDateString(),
+        opponent,
+        mySets,
+        oppSets,
+        won,
+        scoreDetail,
+        memo
+      });
+      if (entries.length > 200) entries.pop();
+      localStorage.setItem(KEY, JSON.stringify(entries));
+      document.getElementById('opponent').value = '';
+      document.getElementById('my-sets').value = '';
+      document.getElementById('opp-sets').value = '';
+      document.getElementById('score-detail').value = '';
+      document.getElementById('match-memo').value = '';
+      render();
+    }
+
+    function deleteEntry(id) {
+      entries = entries.filter(e => e.id !== id);
+      localStorage.setItem(KEY, JSON.stringify(entries));
+      render();
+    }
+
+    function render() {
+      if (entries.length > 0) document.getElementById('result').classList.add('show');
+      const wins = entries.filter(e => e.won).length;
+      const losses = entries.length - wins;
+      const rate = entries.length ? Math.round(wins / entries.length * 100) : '—';
+      document.getElementById('stat-win').textContent = wins;
+      document.getElementById('stat-lose').textContent = losses;
+      document.getElementById('stat-rate').textContent = entries.length ? rate + '%' : '—';
+      document.getElementById('entry-count').textContent = '合計 ' + entries.length + ' 試合';
+
+      if (!entries.length) {
+        document.getElementById('entries').innerHTML = '<p style="text-align:center;color:#cbd5e1;font-size:14px;padding:16px;">まだ記録がありません</p>';
+        return;
+      }
+      document.getElementById('entries').innerHTML = entries.map(e => `
+        <div class="entry-card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+            <div>
+              <div class="entry-date">${e.date}</div>
+              <div class="entry-vs">vs ${e.opponent.replace(/</g,'&lt;')}</div>
+              <div class="entry-score">${e.mySets} - ${e.oppSets}セット${e.scoreDetail ? ' (' + e.scoreDetail.replace(/</g,'&lt;') + ')' : ''}</div>
+              ${e.memo ? `<div style="font-size:12px;color:#64748b;margin-top:2px;">📝 ${e.memo.replace(/</g,'&lt;')}</div>` : ''}
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
+              ${e.won ? '<span class="win-badge">WIN</span>' : '<span class="loss-badge">LOSS</span>'}
+              <button onclick="deleteEntry(${e.id})" style="color:#cbd5e1;background:none;border:none;cursor:pointer;font-size:16px;padding:0 4px;">×</button>
+            </div>
+          </div>
+        </div>`).join('');
+    }
+    </script>
+</body>
+</html>
