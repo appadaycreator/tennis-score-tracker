@@ -1,8 +1,9 @@
 {
   "name": "Tennis Score Tracker",
   "short_name": "tennis-score",
-  "start_url": "/",
+  "start_url": "/tennis-score-tracker/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#6366f1"
+  "theme_color": "#6366f1",
+  "scope": "/tennis-score-tracker/"
 }
